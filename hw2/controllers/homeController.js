@@ -48,8 +48,8 @@ console.log('in homeController pass 2');
 router.addCourses = (req, res) => {
     console.log("in homeController addCourses");
     
-    // ! WIPING DATABASE !
-    col.remove({});
+    // ! ENABLE FOR TESTING !
+    // col.remove({});
     
     let studentName = req.body.name;
     console.log("name " + studentName);
@@ -73,18 +73,19 @@ router.addCourses = (req, res) => {
         allCourses.push({name: studentName, grades: [grade1, grade2, grade3, grade4], gpa: SGPA});
     }
     
+    
+    res.render('thanks', {title: "CSC Courses"});
     // ! TESTING REDIRECTION !
-    //res.render('thanks', {title: "CSC Courses"});
-    res.render("test", {
-        array: allCourses,
-        name: studentName,
-        g1: grade1 ,
-        g2: grade2 ,
-        g3: grade3 ,
-        g4: grade4 ,
-        gpa: SGPA ,
-        cutoff: GPA_CUTOFF, title: "Test"
-    });
+    //res.render("test", {
+    //    array: allCourses,
+    //   name: studentName,
+    //    g1: grade1 ,
+    //    g2: grade2 ,
+    //    g3: grade3 ,
+    //    g4: grade4 ,
+    //    gpa: SGPA ,
+    //    cutoff: GPA_CUTOFF, title: "Test"
+    //});
 };
 
 console.log('in homeController pass 3');
